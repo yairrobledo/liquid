@@ -13,6 +13,24 @@ view: products {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: category_comparison {
+    type: string
+    sql:
+      CASE
+      WHEN {% condition select_category %}
+        ${category}
+        {% endcondition %}
+      THEN ${category}
+      ELSE 'All Other Categories'
+      END
+      ;;
+  }
+
+  filter: select_category {
+    type: string
+    suggest_explore: order_items
+    suggest_dimension: products.category
+  }
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Brand" in Explore.

@@ -28,7 +28,7 @@ view: order_items {
     label_from_parameter: select_timeframe
     type: string
     sql:
-    {% if select_timeframe._parameter_value == 'created_date' %}
+    {% if select_timeframe._parameter_value == 'returned_date' %}
      ${returned_date}
     {% elsif select_timeframe._parameter_value == 'returned_week' %}
     ${returned_week}
