@@ -16,6 +16,15 @@ view: users {
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Age" in Explore.
+   dimension: history_button {
+
+    sql: ${TABLE}.id ;;
+
+    html: html: <a href="{{value}}"><button>URL Button</button></a>
+
+            ;;
+
+    }
 
   dimension: age {
     type: number
