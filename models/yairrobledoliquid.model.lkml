@@ -34,6 +34,11 @@ explore: order_items {
     sql_on: ${order_items.id} = ${user_facts.user_id};;
     relationship: many_to_one
   }
+  join: brand_order_facts {
+    type: left_outer
+    sql_on: ${products.brand} = ${brand_order_facts.brand} ;;
+    relationship: many_to_one
+  }
 
   join: orders {
 
@@ -46,7 +51,6 @@ explore: order_items {
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
     relationship: many_to_one
   }
-
 
   join: users {
     type: left_outer
