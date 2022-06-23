@@ -65,6 +65,20 @@ explore: order_items {
   }
 }
 
+explore: base_events {
+  extension: required
+  join: event_session_facts {
+    type: left_outer
+    sql_on: ${events.session_id} = ${event_session_facts.session_id} ;;
+    relationship: many_to_one
+  }
+  join: users {
+    type: left_outer
+    sql_on: ${events.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+}
+
 explore: orders {
   join: users {
     type: left_outer
