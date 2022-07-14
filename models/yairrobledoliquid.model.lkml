@@ -8,8 +8,8 @@ include: "/views/**/*.view"
 # use the Quick Help panel on the right to see documentation.
 
 datagroup: yairrobledoliquid_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  sql_trigger:SELECT FLOOR((EXTRACT(epoch from GETDATE()) - 60*60*6)/(60*60*24)) ;;
+  description: "Triggered at 06:00 hrs every day"
 }
 
 persist_with: yairrobledoliquid_default_datagroup
